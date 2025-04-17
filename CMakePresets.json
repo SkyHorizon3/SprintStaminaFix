@@ -10,9 +10,9 @@
 			"name": "common",
 			"hidden": true,
 			"cacheVariables": {
-				"SKSE_SUPPORT_XBYAK": "ON",
-				"SKSEPluginAuthor": "$env{SKSEPluginAuthor}"
-			}
+				"SKSE_SUPPORT_XBYAK": "ON"
+			},
+			"binaryDir": "${sourceDir}/build"
 		},
 		{
 			"name": "vcpkg",
@@ -22,6 +22,10 @@
 					"type": "STRING",
 					"value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
 				},
+				"VCPKG_OVERLAY_PORTS": {
+					"type": "STRING",
+					"value": "${sourceDir}/cmake/ports/"
+				  },
 				"VCPKG_TARGET_TRIPLET": "x64-windows-static-md"
 			}
 		},
@@ -51,6 +55,7 @@
 		{
 			"name": "AE",
 			"cacheVariables": {
+				"BUILD_SKYRIM": true,
 				"ENABLE_SKYRIM_AE": "ON",
 				"ENABLE_SKYRIM_SE": "OFF",
 				"ENABLE_SKYRIM_VR": "OFF"
@@ -65,6 +70,7 @@
 		{
 			"name": "SE",
 			"cacheVariables": {
+				"BUILD_SKYRIM": true,
 				"ENABLE_SKYRIM_AE": "OFF",
 				"ENABLE_SKYRIM_SE": "ON",
 				"ENABLE_SKYRIM_VR": "OFF"
@@ -79,6 +85,7 @@
 		{
 			"name": "VR",
 			"cacheVariables": {
+				"BUILD_SKYRIM": true,
 				"ENABLE_SKYRIM_AE": "OFF",
 				"ENABLE_SKYRIM_SE": "OFF",
 				"ENABLE_SKYRIM_VR": "ON"
@@ -93,6 +100,7 @@
 		{
 			"name": "ALL",
 			"cacheVariables": {
+				"BUILD_SKYRIM": true,
 				"ENABLE_SKYRIM_AE": "ON",
 				"ENABLE_SKYRIM_SE": "ON",
 				"ENABLE_SKYRIM_VR": "ON"
@@ -107,6 +115,7 @@
 		{
 			"name": "PRE-AE",
 			"cacheVariables": {
+				"BUILD_SKYRIM": true,
 				"ENABLE_SKYRIM_AE": "OFF",
 				"ENABLE_SKYRIM_SE": "ON",
 				"ENABLE_SKYRIM_VR": "ON"
@@ -121,9 +130,11 @@
 		{
 			"name": "FLATRIM",
 			"cacheVariables": {
+				"BUILD_SKYRIM": true,
 				"ENABLE_SKYRIM_AE": "ON",
 				"ENABLE_SKYRIM_SE": "ON",
-				"ENABLE_SKYRIM_VR": "OFF"
+				"ENABLE_SKYRIM_VR": "OFF",
+				"Build Tests": "OFF"
 			},
 			"inherits": [
 				"common",
